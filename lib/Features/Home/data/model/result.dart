@@ -47,21 +47,4 @@ class Result {
 				voteAverage: (json['vote_average'] as num?)?.toDouble(),
 				voteCount: json['vote_count'] as int?,
 			);
-
-	Map<String, dynamic> toJson() => {
-				'adult': adult,
-				'backdrop_path': backdropPath,
-				'genre_ids': genreIds,
-				'id': id,
-				'original_language': originalLanguage,
-				'original_title': originalTitle,
-				'overview': overview,
-				'popularity': popularity,
-				'poster_path': posterPath,
-				'release_date': releaseDate,
-				'title': title,
-				'video': video,
-				'vote_average': voteAverage,
-				'vote_count': voteCount,
-			};
 }

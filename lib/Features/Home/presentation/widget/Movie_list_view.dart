@@ -22,7 +22,7 @@ class MovieListView extends StatelessWidget {
         child:   ListView.builder(
           itemCount: state.model.length,
           itemBuilder: (context, index) => MovieItem(
-            movieModel:  state.model[index].results![index]   ,
+            movieModel:  state.model.elementAt(index)   ,
           ),
         ),
       );

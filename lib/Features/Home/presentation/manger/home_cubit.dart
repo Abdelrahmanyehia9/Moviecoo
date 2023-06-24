@@ -9,7 +9,13 @@ class AllMovieCubit extends Cubit<HomeState> {
   Future<void> fetchData() async {
     emit(HomeLoading());
     var data = await repo.fetchAllMovies();
-    data.fold((fail) => emit(HomeFailure(fail.toString())),
-        (movie) => emit(HomeSuccess(movie)));
+    data.fold(
+      (fail) {
+        emit(HomeFailure(fail.toString()));
+      },
+      (movie) {
+        emit(HomeSuccess(movie));
+      },
+    );
   }
 }
