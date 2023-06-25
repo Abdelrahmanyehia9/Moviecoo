@@ -1,4 +1,3 @@
-import 'package:moviecoo/Features/Home/data/model/movie_model.dart';
 
 import '../../data/model/result.dart';
 

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:moviecoo/Features/Home/data/repos/home_repo_impl.dart';
-import 'package:moviecoo/Features/Home/presentation/manger/home_cubit.dart';
+import 'package:moviecoo/Features/Movies/presentation/manger/movie_details_cubit.dart';
+
 import 'package:moviecoo/constants.dart';
 import 'package:moviecoo/core/utils/app_router.dart';
 import 'package:moviecoo/core/utils/service_locator.dart';
+
+import 'Features/Movies/data/repos/home_repo_impl.dart';
+import 'Features/Movies/presentation/manger/Newest_cubit.dart';
+import 'Features/Movies/presentation/manger/home_cubit.dart';
 
 void main() {
   setupServiceLocator();
@@ -23,6 +27,8 @@ class MyApp extends StatelessWidget {
             getIt.get<HomeRepoImpl>(),
           )..fetchData(),
         ),
+        BlocProvider(create: (context) => NewestMovieCubit(getIt.get<HomeRepoImpl>())..fetchData()) ,
+        BlocProvider(create: (context)=> MovieDetailsCubit(getIt.get<HomeRepoImpl>()))
       ],
       child: MaterialApp.router(
           debugShowCheckedModeBanner: false,

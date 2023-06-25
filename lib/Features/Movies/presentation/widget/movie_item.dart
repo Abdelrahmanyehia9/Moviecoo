@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:moviecoo/Features/Home/data/model/movie_model.dart';
+import 'package:moviecoo/constants.dart';
 import 'package:moviecoo/core/Widget/custom_button.dart';
 import 'package:moviecoo/core/utils/dim.dart';
 
@@ -21,64 +21,70 @@ class MovieItem extends StatelessWidget {
         height: dimHeight(context) * 0.2,
         width: dimWidth(context),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(width: 12),
             Expanded(
               flex: 1,
               child: SizedBox(
                 height: double.infinity,
                 child: Image.network(
-                  'https://image.tmdb.org/t/p/w500${movieModel.backdropPath!}',
+                  '$imagePath${movieModel.posterPath!}',
                   fit: BoxFit.cover,
                 ),
               ),
             ),
-            SizedBox(width: 12),
+            const SizedBox(width: 12),
             Expanded(
               flex: 2,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(movieModel.title!, textAlign: TextAlign.start, style: GoogleFonts.robotoCondensed(fontSize: 20, fontWeight: FontWeight.w600)),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  const SizedBox(height: 12),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          const Icon(
-                            Icons.star,
-                            color: Color(0xffF6C700),
-                            size: 14,
-                          ),
-                          Text(
-                            movieModel.voteAverage.toString(),
-                            style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 10),
-                          ),
-                        ],
+                      const Icon(
+                        Icons.star,
+                        color: Color(0xffF6C700),
+                        size: 14,
                       ),
                       Text(
-                        '${movieModel.releaseDate}| ${movieModel.popularity.toString()}',
-                        style: GoogleFonts.robotoCondensed(fontSize: 12, fontWeight: FontWeight.w100),
+                        movieModel.voteAverage.toString(),
+                        style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 10),
                       ),
                     ],
                   ),
-                  const CustomButton()
+                  Text(
+                    '${movieModel.releaseDate!.substring(0,4)} |  ${movieModel.popularity!.round().toString()}',
+                    style: GoogleFonts.robotoCondensed(fontSize: 12, fontWeight: FontWeight.w100),
+                  ),
+                  const SizedBox(height: 12),
+
+                  InkWell(onTap: (){
+                    print('button Pressed') ;
+                  },
+                      child: const CustomButton())
                 ],
               ),
             ),
             Center(
-              child: CircleAvatar(
-                backgroundColor: Colors.white.withOpacity(0.1),
-                child: const Icon(
-                  Icons.bookmark,
-                  color: Colors.white,
+              child: InkWell(
+                onTap: (){
+                  print("iconPressed") ;
+                },
+                child: CircleAvatar(
+                  backgroundColor: Colors.white.withOpacity(0.1),
+                  child: const Icon(
+                    Icons.bookmark,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
-            SizedBox(width: 12),
+            const SizedBox(width: 12),
           ],
         ),
       ),

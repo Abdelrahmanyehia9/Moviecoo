@@ -1,6 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:moviecoo/Features/Home/data/repos/home_repo.dart';
-import 'package:moviecoo/Features/Home/presentation/manger/home_states.dart';
+import 'package:moviecoo/Features/Movies/data/repos/home_repo.dart';
+
+import 'home_states.dart';
+
 
 class AllMovieCubit extends Cubit<HomeState> {
   AllMovieCubit(this.repo) : super(HomeInitial());

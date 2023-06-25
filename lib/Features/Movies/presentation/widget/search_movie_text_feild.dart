@@ -20,7 +20,7 @@ class SearchMovieTextField extends StatelessWidget {
             decoration: const InputDecoration(
               contentPadding: EdgeInsets.symmetric(horizontal: 4),
               icon:  Icon(Icons.search , color: Colors.white,),
-              hintText: 'Search Movie or Actor ' ,
+              hintText: 'Search Movie  ' ,
               hintStyle: TextStyle( fontSize: 14),
 
               border: InputBorder.none ,
